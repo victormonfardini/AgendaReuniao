@@ -31,7 +31,7 @@ public class ConexaoMySQL
 	
 		
 		//Informações para conexão
-		final String 	SERVIDOR = "1.0.0.1",//"10.0.1.216",
+		final String 	SERVIDOR = "ENERGIA",//"1.0.0.1"
 						BANCO_DE_DADOS = "agenda_reuniao",
 						USUARIO = "conexao",//"conexao",//conexao - Usuário criado para poder conseguir conectar
 						SENHA = "conexao";//conexao";  //no banco de dados em um outro IP e não em localhost
