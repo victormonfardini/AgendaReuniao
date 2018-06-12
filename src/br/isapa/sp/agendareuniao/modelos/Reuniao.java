@@ -11,6 +11,7 @@ public class Reuniao {
 	private String horaInicio;
 	private String horaFinal;
 	private String sala;
+	private String observacao;
 	private int id;
 
 	/*
@@ -63,6 +64,14 @@ public class Reuniao {
 
 	public void setSala(String sala) {
 		this.sala = sala;
+	}
+	
+	public String getObservacao() {
+		return observacao;
+	}
+
+	public void setObservacao(String observacao) {
+		this.observacao = observacao;
 	}
 
 	public int getId() {

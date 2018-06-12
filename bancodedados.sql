@@ -19,6 +19,8 @@ horaFinal TIME,
 
 sala varchar(255),
 
+observacao varchar(255),
+
 primary key(id)
 );
 

@@ -11,6 +11,8 @@ import java.util.List;
 import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
+import javax.swing.JMenu;
+import javax.swing.JMenuBar;
 import javax.swing.JOptionPane;
 import javax.swing.JScrollPane;
 import javax.swing.JTable;
@@ -35,6 +37,7 @@ public class FramePrincipal extends JFrame {
 	private JButton btAgendamento, btCancelamento;
 	private JLabel lbIcone;
 	private JLabel lbMenu;
+	private JLabel lbCriador;
 	String statusAD;
 
 	/*
@@ -55,7 +58,8 @@ public class FramePrincipal extends JFrame {
 	private void inicializarComponentes() {
 		final Font FONTE_PADRAO = new Font("Arial", Font.BOLD, 13);
 		final Font FONTE_MENU = new Font("Arial", Font.BOLD, 17);
-		final int LARGURA = 1006, ALTURA = 550;
+		final Font FONTE_CRIADOR = new Font("Arial", Font.BOLD, 9);
+		final int LARGURA = 1256, ALTURA = 550;
 
 		// this
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
@@ -138,12 +142,23 @@ public class FramePrincipal extends JFrame {
 		lbIcone = new JLabel(Recursos.imgIsapa);
 		lbIcone.setSize(200, 300);
 		lbIcone.setIcon(Recursos.imgIsapa);
-		lbIcone.setLocation(0, btCancelamento.getY() + btCancelamento.getHeight() + 138);
+		lbIcone.setLocation(0, btCancelamento.getY() + btCancelamento.getHeight() + 128);
 		add(lbIcone);
+		
+		// lbCriador
+		lbCriador = new JLabel();
+		lbCriador.setForeground(Color.BLACK);
+		lbCriador.setBackground(Color.BLACK);
+		lbCriador.setFont(FONTE_CRIADOR);
+		lbCriador.setText("Criado por Victor Monfardini");
+		lbCriador.setSize(140, 20);
+		lbCriador.setLocation(30,lbIcone.getHeight() + 207);
+		add(lbCriador);
+		
 
 		// agTabela
 		agTabela = new JScrollPane();
-		agTabela.setSize(800, 520);
+		agTabela.setSize(1050, 520);
 		agTabela.setLocation(200, 0);
 		add(agTabela);
 
@@ -158,6 +173,8 @@ public class FramePrincipal extends JFrame {
 		tabela.getTableHeader().setForeground(Color.BLACK);
 		tabela.setFont(FONTE_PADRAO);
 		agTabela.setViewportView(tabela);
+		
+	
 
 	}
 
@@ -207,6 +224,15 @@ public class FramePrincipal extends JFrame {
 	public void popularTabelaReuniao() {
 		ModeloTabelaReuniao reuniao = new ModeloTabelaReuniao(this.listaReuniao);
 		tabela.setModel(reuniao);
+		tabela.getColumnModel().getColumn(0).setMaxWidth(150);
+		tabela.getColumnModel().getColumn(0).setMinWidth(95);
+		tabela.getColumnModel().getColumn(2).setMaxWidth(150);
+		tabela.getColumnModel().getColumn(2).setMinWidth(80);
+		tabela.getColumnModel().getColumn(3).setMaxWidth(50);
+		tabela.getColumnModel().getColumn(3).setMinWidth(40);
+		tabela.getColumnModel().getColumn(4).setMaxWidth(50);
+		tabela.getColumnModel().getColumn(4).setMinWidth(40);
+
 	}
 
 	/**

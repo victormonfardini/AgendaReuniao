@@ -24,7 +24,9 @@ import javax.swing.JDialog;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JOptionPane;
+import javax.swing.JTextArea;
 import javax.swing.JTextField;
+import javax.swing.border.LineBorder;
 
 import com.toedter.calendar.JCalendar;
 import com.toedter.calendar.JDateChooser;
@@ -45,6 +47,8 @@ public class FrameAgendamento extends JDialog {
 	private JLabel lbHoraFinal;
 	public JComboBox cbHoraFinal = new JComboBox<>();
 	private JButton btAgendar;
+	private JLabel lbObservacao;
+	private JTextArea tfaObservacao;
 	JCalendar cCalendario = new JCalendar();
 
 	int horaI, horaF;
@@ -72,7 +76,7 @@ public class FrameAgendamento extends JDialog {
 
 	private void inicializarComponentes() {
 
-		final Dimension TAMANHO = new Dimension(320, 220);
+		final Dimension TAMANHO = new Dimension(320, 290);
 		final Font FONTE_PADRAO = new Font("Arial", Font.PLAIN, 15);
 
 		// this
@@ -82,7 +86,8 @@ public class FrameAgendamento extends JDialog {
 		setMinimumSize(TAMANHO);
 		setLocationRelativeTo(null);
 		this.getContentPane().setBackground(Color.WHITE);
-		setTitle("                        AGENDAMENTO DE REUNIÕES");
+		setTitle("                                    AGENDAMENTO");
+		
 
 		// lbAssunto
 		lbAssunto = new JLabel();
@@ -164,13 +169,32 @@ public class FrameAgendamento extends JDialog {
 		cbHoraFinal.setLocation(lbHoraFinal.getX() + lbHoraFinal.getWidth(), lbHoraInicio.getY() + 4);
 		cbHoraFinal.addItem("");
 		add(cbHoraFinal);
+		
+		// lbobservacao
+		lbObservacao = new JLabel();
+		lbObservacao.setForeground(Color.BLACK);
+		lbObservacao.setFont(FONTE_PADRAO);
+		lbObservacao.setText("OBS: ");
+		lbObservacao.setSize(78, 60);
+		lbObservacao.setLocation(lbHoraInicio.getX(), lbHoraFinal.getY() + lbHoraFinal.getHeight());
+		add(lbObservacao);
+		
+		// tfaObservacao
+		tfaObservacao = new JTextArea(3, 3);
+		tfaObservacao.setFont(FONTE_PADRAO);
+		tfaObservacao.setSize(235, 60);
+		tfaObservacao.setBorder(new LineBorder(Color.BLACK));
+		tfaObservacao.setLineWrap(true);
+		tfaObservacao.setLocation(lbObservacao.getWidth()- 9, lbObservacao.getY() + 4);
+		add(tfaObservacao);
+		
 
 		// btAgendar
 		btAgendar = new JButton();
 		btAgendar.setFont(FONTE_PADRAO);
 		btAgendar.setText("AGENDAR");
 		btAgendar.setSize(295, 20);
-		btAgendar.setLocation(10, lbHoraFinal.getY() + lbHoraFinal.getHeight() + 18);
+		btAgendar.setLocation(10, lbObservacao.getY() + lbObservacao.getHeight() + 18);
 		add(btAgendar);
 
 	}
@@ -183,6 +207,7 @@ public class FrameAgendamento extends JDialog {
 		cbHoraInicio.setSelectedItem(reuniaoSelecionada.getHoraInicio());
 		cbHoraFinal.setSelectedItem(reuniaoSelecionada.getHoraFinal());
 		cbSala.setSelectedItem(reuniaoSelecionada.getSala());
+		tfaObservacao.setText(reuniaoSelecionada.getObservacao());
 	}
 
 	/**
@@ -255,6 +280,9 @@ public class FrameAgendamento extends JDialog {
 				reuniao.setHoraFinal(horF);
 				// a variavel dataMesAno recebe o conteudo da variavel data
 				reuniao.setDataMesAno(data);
+				
+				//Setando a observação que foi colocada no JTextArea
+				reuniao.setObservacao(tfaObservacao.getText());
 
 				// FAZER ALGORITMO QUE VERIFICA SE EXISTE UM CONTATO
 				// SELECIONADO
@@ -305,6 +333,7 @@ public class FrameAgendamento extends JDialog {
 		cbHoraInicio.setSelectedItem("");
 		cbHoraFinal.setSelectedItem("");
 		cbSala.setSelectedItem("");
+		tfaObservacao.setText("");
 	}
 
 	/**

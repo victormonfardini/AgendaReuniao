@@ -41,7 +41,7 @@ public class ModeloTabelaReuniao extends AbstractTableModel
 	@Override
 	public int getColumnCount() 
 	{
-		return 5;
+		return 6;
 	}
 
 	
@@ -70,6 +70,8 @@ public class ModeloTabelaReuniao extends AbstractTableModel
 				return listaReuniao.get(indLinha).getHoraInicio();
 			case 4:
 				return listaReuniao.get(indLinha).getHoraFinal();
+			case 5:
+				return listaReuniao.get(indLinha).getObservacao();
 		}
 		return null;
 	}
@@ -86,9 +88,11 @@ public class ModeloTabelaReuniao extends AbstractTableModel
 		case 2:
 			return "DATA";
 		case 3:
-			return "HORARIO INICIO";
+			return "INICIO";
 		case 4:
-			return "HORARIO FINAL";
+			return "FINAL";
+		case 5:
+			return "OBSERVAÇÃO";
 		default:
 			return null;
 		}

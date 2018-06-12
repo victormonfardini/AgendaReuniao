@@ -14,7 +14,7 @@ public class DAOReuniao
 		public static void inserir(Reuniao reuniao) throws Exception 
 	{
 		
-		final String SQL = "INSERT INTO agenda_reuniao SET usuario = ?, assunto = ?, dataMesAno = ?, horaInicio = ?, horaFinal = ?, sala = ?";
+		final String SQL = "INSERT INTO agenda_reuniao SET usuario = ?, assunto = ?, dataMesAno = ?, horaInicio = ?, horaFinal = ?, sala = ?, observacao = ?";
 	
 		try 
 		{
@@ -36,6 +36,7 @@ public class DAOReuniao
 			stmt.setString(4, reuniao.getHoraInicio());
 			stmt.setString(5, reuniao.getHoraFinal());
 			stmt.setString(6, reuniao.getSala());
+			stmt.setString(7, reuniao.getObservacao());
 			
 			//Executando o Script
 			stmt.execute();
@@ -71,7 +72,7 @@ public class DAOReuniao
 		//Lista que armazenará os contatos que estão no banco
 		List<Reuniao> listaReuniao = new ArrayList<>();
 		
-		final String SQL = "SELECT id, usuario, assunto, dataMesAno,TIME_FORMAT(horaInicio, '%H:%i'),TIME_FORMAT(horaFinal, '%H:%i') FROM agenda_reuniao "
+		final String SQL = "SELECT id, usuario, assunto, dataMesAno,TIME_FORMAT(horaInicio, '%H:%i'),TIME_FORMAT(horaFinal, '%H:%i'), observacao FROM agenda_reuniao "
 				+ "WHERE sala = 'Sala Serra' AND dataMesAno >= curdate() ORDER BY dataMesAno, horaInicio;";
 		
 		try 
@@ -110,6 +111,7 @@ public class DAOReuniao
 				r.setDataMesAno(data); //Nome da coluna
 				r.setHoraInicio(resultadosDaBusca.getString("TIME_FORMAT(horaInicio, '%H:%i')"));
 				r.setHoraFinal(resultadosDaBusca.getString("TIME_FORMAT(horaFinal, '%H:%i')"));
+				r.setObservacao(resultadosDaBusca.getString("observacao"));
 				
 				
 				//Adicionar o objeto c na lista de contatos
@@ -141,7 +143,7 @@ public class DAOReuniao
 		//Lista que armazenará os contatos que estão no banco
 				List<Reuniao> listaReuniao = new ArrayList<>();
 				
-				final String SQL = "SELECT id, usuario, assunto, dataMesAno, TIME_FORMAT(horaInicio, '%H:%i'),TIME_FORMAT(horaFinal, '%H:%i') FROM agenda_reuniao "+
+				final String SQL = "SELECT id, usuario, assunto, dataMesAno, TIME_FORMAT(horaInicio, '%H:%i'),TIME_FORMAT(horaFinal, '%H:%i'), observacao FROM agenda_reuniao "+
 						 "WHERE sala = 'Sala Conselheiro' AND dataMesAno >= curdate() ORDER BY dataMesAno, horaInicio;";
 				
 				try 
@@ -180,6 +182,7 @@ public class DAOReuniao
 						r.setDataMesAno(data); //Nome da coluna
 						r.setHoraInicio(resultadosDaBusca.getString("TIME_FORMAT(horaInicio, '%H:%i')"));
 						r.setHoraFinal(resultadosDaBusca.getString("TIME_FORMAT(horaFinal, '%H:%i')"));
+						r.setObservacao(resultadosDaBusca.getString("observacao"));
 						
 						
 						//Adicionar o objeto c na lista de contatos
@@ -211,7 +214,7 @@ public class DAOReuniao
 		//Lista que armazenará os contatos que estão no banco
 				List<Reuniao> listaReuniao = new ArrayList<>();
 				
-				final String SQL = "SELECT id, usuario, assunto, dataMesAno,TIME_FORMAT(horaInicio, '%H:%i'),TIME_FORMAT(horaFinal, '%H:%i') FROM agenda_reuniao "
+				final String SQL = "SELECT id, usuario, assunto, dataMesAno,TIME_FORMAT(horaInicio, '%H:%i'),TIME_FORMAT(horaFinal, '%H:%i'), observacao FROM agenda_reuniao "
 						+ "WHERE sala = 'Sala Itajai' AND dataMesAno >= curdate() ORDER BY dataMesAno, horaInicio;";
 				
 				try 
@@ -250,6 +253,7 @@ public class DAOReuniao
 						r.setDataMesAno(data); //Nome da coluna
 						r.setHoraInicio(resultadosDaBusca.getString("TIME_FORMAT(horaInicio, '%H:%i')"));
 						r.setHoraFinal(resultadosDaBusca.getString("TIME_FORMAT(horaFinal, '%H:%i')"));
+						r.setObservacao(resultadosDaBusca.getString("observacao"));
 						
 						
 						//Adicionar o objeto c na lista de contatos
@@ -280,7 +284,7 @@ public class DAOReuniao
 		//Lista que armazenará os contatos que estão no banco
 				List<Reuniao> listaReuniao = new ArrayList<>();
 				
-				final String SQL = "SELECT id, usuario, assunto, dataMesAno, TIME_FORMAT(horaInicio, '%H:%i'),TIME_FORMAT(horaFinal, '%H:%i') FROM agenda_reuniao "+
+				final String SQL = "SELECT id, usuario, assunto, dataMesAno, TIME_FORMAT(horaInicio, '%H:%i'),TIME_FORMAT(horaFinal, '%H:%i'), observacao FROM agenda_reuniao "+
 						 "WHERE sala = 'Sala Leopoldina' AND dataMesAno >= curdate() ORDER BY dataMesAno, horaInicio;";
 				
 				try 
@@ -319,6 +323,7 @@ public class DAOReuniao
 						r.setDataMesAno(data); //Nome da coluna
 						r.setHoraInicio(resultadosDaBusca.getString("TIME_FORMAT(horaInicio, '%H:%i')"));
 						r.setHoraFinal(resultadosDaBusca.getString("TIME_FORMAT(horaFinal, '%H:%i')"));
+						r.setObservacao(resultadosDaBusca.getString("observacao"));
 						
 						
 						//Adicionar o objeto c na lista de contatos

@@ -44,6 +44,7 @@ public class FrameLogin extends JFrame{
 	public FrameLogin() {
 		inicializarComponentes();
 		inicializarEventos();
+		getRootPane().setDefaultButton(btLogin);
 	}
 
 	private void inicializarComponentes() {
@@ -60,6 +61,7 @@ public class FrameLogin extends JFrame{
 		setLocationRelativeTo(null);
 		setResizable(false);
 		this.getContentPane().setBackground(Color.WHITE);
+		getRootPane().setDefaultButton(btLogin);
 
 		// lbTitulo
 		lbTitulo = new JLabel();
@@ -143,8 +145,8 @@ public class FrameLogin extends JFrame{
 
 		Scanner scanner = new Scanner(System.in);
 
-		String url = "ldap://172.16.0.13:389";
-		// String url = "ldap://corp.isapa.net:389";
+		//IP do servidor do AD 
+		String url = "ldap://172.16.0.35:389";
 		Hashtable env = new Hashtable();
 		env.put(Context.INITIAL_CONTEXT_FACTORY, "com.sun.jndi.ldap.LdapCtxFactory");
 		env.put(Context.PROVIDER_URL, url);
@@ -218,6 +220,7 @@ public class FrameLogin extends JFrame{
 				
 
 			}
+			
 		};
 
 		btCancelar.addActionListener(alSair);
