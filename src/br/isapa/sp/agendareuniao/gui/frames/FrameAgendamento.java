@@ -136,6 +136,8 @@ public class FrameAgendamento extends JDialog {
 		cbSala.addItem("Sala Conselheiro");
 		cbSala.addItem("Sala Itajai");
 		cbSala.addItem("Sala Leopoldina");
+		cbSala.addItem("Sala CTI");
+		cbSala.addItem("Sala Guarulhos");
 		add(cbSala);
 
 		// lbHoraInicio

@@ -33,7 +33,7 @@ public class FramePrincipal extends JFrame {
 	private JScrollPane agTabela;
 	private JTable tabela;
 	private JLabel lbAgendado;
-	private JButton btSalaSEA, btSalaIAI, btSalaCN, btSalaLEO;
+	private JButton btSalaSEA, btSalaIAI, btSalaCN, btSalaLEO, btSalaCTI, btSalaGUA;
 	private JButton btAgendamento, btCancelamento;
 	private JLabel lbIcone;
 	private JLabel lbMenu;
@@ -111,6 +111,22 @@ public class FramePrincipal extends JFrame {
 		btSalaLEO.setSize(200, 20);
 		btSalaLEO.setLocation(0, btSalaCN.getY() + btSalaCN.getHeight());
 		add(btSalaLEO);
+		
+		// btSalaCTI
+		btSalaCTI = new JButton();
+		btSalaCTI.setFont(FONTE_PADRAO);
+		btSalaCTI.setText("SALA CTI TREINAMENTOS");
+		btSalaCTI.setSize(200, 20);
+		btSalaCTI.setLocation(0, btSalaLEO.getY() + btSalaLEO.getHeight());
+		add(btSalaCTI);
+
+		// btSalaGUA
+		btSalaGUA = new JButton();
+		btSalaGUA.setFont(FONTE_PADRAO);
+		btSalaGUA.setText("SALA GUARULHOS");
+		btSalaGUA.setSize(200, 20);
+		btSalaGUA.setLocation(0, btSalaCTI.getY() + btSalaCTI.getHeight());
+		add(btSalaGUA);
 
 		// lbMenu
 		lbMenu = new JLabel();
@@ -119,7 +135,7 @@ public class FramePrincipal extends JFrame {
 		lbMenu.setFont(FONTE_MENU);
 		lbMenu.setText("               MENU");
 		lbMenu.setSize(200, 20);
-		lbMenu.setLocation(0, btSalaLEO.getY() + btSalaLEO.getHeight());
+		lbMenu.setLocation(0, btSalaGUA.getY() + btSalaGUA.getHeight());
 		add(lbMenu);
 
 		// btAgendamento
@@ -142,7 +158,7 @@ public class FramePrincipal extends JFrame {
 		lbIcone = new JLabel(Recursos.imgIsapa);
 		lbIcone.setSize(200, 300);
 		lbIcone.setIcon(Recursos.imgIsapa);
-		lbIcone.setLocation(0, btCancelamento.getY() + btCancelamento.getHeight() + 128);
+		lbIcone.setLocation(0, btCancelamento.getY() + btCancelamento.getHeight() + 90);
 		add(lbIcone);
 		
 		// lbCriador
@@ -211,6 +227,26 @@ public class FramePrincipal extends JFrame {
 	private void BuscarIAI() {
 		try {
 			listaReuniao = DAOReuniao.buscarItajai();
+		} catch (Exception e1) {
+			e1.printStackTrace();
+			JOptionPane.showMessageDialog(this, "Ocorreu um erro ao buscar as reuniões do banco de dados",
+					"Buscar Reunião", JOptionPane.ERROR_MESSAGE);
+		}
+	}
+	
+	private void BuscarCTI() {
+		try {
+			listaReuniao = DAOReuniao.buscarSerra();
+		} catch (Exception e1) {
+			e1.printStackTrace();
+			JOptionPane.showMessageDialog(this, "Ocorreu um erro ao buscar as reuniões do banco de dados",
+					"Buscar Reunião", JOptionPane.ERROR_MESSAGE);
+		}
+	}
+	
+	private void BuscarGUA() {
+		try {
+			listaReuniao = DAOReuniao.buscarSerra();
 		} catch (Exception e1) {
 			e1.printStackTrace();
 			JOptionPane.showMessageDialog(this, "Ocorreu um erro ao buscar as reuniões do banco de dados",

@@ -1,6 +1,5 @@
 package br.isapa.sp.agendareuniao;
 
-import br.isapa.sp.agendareuniao.gui.frames.FrameAgendamento;
 import br.isapa.sp.agendareuniao.gui.frames.FrameLogin;
 import br.isapa.sp.agendareuniao.resources.Recursos;
 
@@ -10,7 +9,7 @@ public class Principal {
 
 		Recursos.carregar();
 		new FrameLogin().setVisible(true);
-		
+		//new FramePrincipal().setVisible(true);
 
 	}
 
