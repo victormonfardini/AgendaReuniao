@@ -1,5 +1,6 @@
 package br.isapa.sp.agendareuniao;
 
+import br.isapa.sp.agendareuniao.gui.frames.FramePrincipal;
 import br.isapa.sp.agendareuniao.gui.frames.FrameLogin;
 import br.isapa.sp.agendareuniao.resources.Recursos;
 

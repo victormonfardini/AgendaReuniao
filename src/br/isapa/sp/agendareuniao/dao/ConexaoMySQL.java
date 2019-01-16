@@ -31,12 +31,21 @@ public class ConexaoMySQL
 	
 		
 		//Informações para conexão
-		final String 	SERVIDOR = "ENERGIA",//"1.0.0.1"
+		final String 	SERVIDOR = "ENERGIA",//Antigo "1.0.0.1"
 						BANCO_DE_DADOS = "agenda_reuniao",
-						USUARIO = "conexao",//"root",//conexao - Usuário criado para poder conseguir conectar
-						SENHA = "conexao";//root";  //no banco de dados em um outro IP e não em localhost
+						USUARIO = "conexao",//conexao - Usuário criado para poder conseguir conectar
+						SENHA = "conexao";//no banco de dados em um outro IP e não em localhost
 		final int PORTA = 3306;
 		
+							/*
+							 * String de conexão com o banco logal (no meu computador)
+							 * //Informações para conexão
+							 *final String 	SERVIDOR = "localhost",
+							 *				BANCO_DE_DADOS = "agenda_reuniao",
+							 *				USUARIO = "root",
+							 *				SENHA = "root";
+							 *final int PORTA = 3306; 
+							 */
 
 		//URL de conexão
 		final String URL = "jdbc:mysql://" + SERVIDOR + ":" + PORTA + "/" + BANCO_DE_DADOS;

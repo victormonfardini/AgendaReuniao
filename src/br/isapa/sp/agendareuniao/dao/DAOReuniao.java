@@ -15,7 +15,12 @@ public class DAOReuniao
 	{
 		
 		final String SQL = "INSERT INTO agenda_reuniao SET usuario = ?, assunto = ?, dataMesAno = ?, horaInicio = ?, horaFinal = ?, sala = ?, observacao = ?";
-	
+		
+			/*
+			 *String para efetuar teste sem a usuário de AD
+			 * final String SQL = "INSERT INTO agenda_reuniao SET assunto = ?, dataMesAno = ?, horaInicio = ?, horaFinal = ?, sala = ?, observacao = ?"; 
+			*/
+			
 		try 
 		{
 			//1ª - Abrir a conexao
@@ -37,6 +42,17 @@ public class DAOReuniao
 			stmt.setString(5, reuniao.getHoraFinal());
 			stmt.setString(6, reuniao.getSala());
 			stmt.setString(7, reuniao.getObservacao());
+			
+						/*
+						//Parte para ser efetuado teste sem utilizar usuário do AD
+						//Aplicando os valores nos '?'
+						stmt.setString(1, reuniao.getAssunto());
+						stmt.setString(2, reuniao.getDataMesAno());
+						stmt.setString(3, reuniao.getHoraInicio());
+						stmt.setString(4, reuniao.getHoraFinal());
+						stmt.setString(5, reuniao.getSala());
+						stmt.setString(6, reuniao.getObservacao());
+						*/
 			
 			//Executando o Script
 			stmt.execute();

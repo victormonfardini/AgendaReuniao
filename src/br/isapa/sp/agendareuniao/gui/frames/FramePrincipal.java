@@ -236,7 +236,7 @@ public class FramePrincipal extends JFrame {
 	
 	private void BuscarCTI() {
 		try {
-			listaReuniao = DAOReuniao.buscarSerra();
+			listaReuniao = DAOReuniao.buscarCTI();
 		} catch (Exception e1) {
 			e1.printStackTrace();
 			JOptionPane.showMessageDialog(this, "Ocorreu um erro ao buscar as reuniões do banco de dados",
@@ -246,7 +246,7 @@ public class FramePrincipal extends JFrame {
 	
 	private void BuscarGUA() {
 		try {
-			listaReuniao = DAOReuniao.buscarSerra();
+			listaReuniao = DAOReuniao.buscarGUA();
 		} catch (Exception e1) {
 			e1.printStackTrace();
 			JOptionPane.showMessageDialog(this, "Ocorreu um erro ao buscar as reuniões do banco de dados",
@@ -351,6 +351,24 @@ public class FramePrincipal extends JFrame {
 				popularTabelaReuniao();
 			}
 		};
+		
+		ActionListener alBuscarCTI = new ActionListener() {
+				
+			@Override
+			public void actionPerformed(ActionEvent arg0) {
+				BuscarCTI();
+				popularTabelaReuniao();					
+			}
+		};		
+		
+		ActionListener alBuscarGUA = new ActionListener() {
+				
+			@Override
+			public void actionPerformed(ActionEvent arg0) {
+				BuscarGUA();
+				popularTabelaReuniao();
+			}	
+		};
 		btSalaIAI.addActionListener(alBuscarIAI);
 
 		btSalaLEO.addActionListener(alBuscarLEO);
@@ -359,6 +377,10 @@ public class FramePrincipal extends JFrame {
 
 		btSalaSEA.addActionListener(alBuscarSEA);
 
+		btSalaCTI.addActionListener(alBuscarCTI);
+		
+		btSalaGUA.addActionListener(alBuscarGUA);
+		
 		ActionListener alExcluir = new ActionListener() {
 
 			@Override
